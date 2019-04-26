@@ -1,0 +1,52 @@
+logging:
+  level: info
+
+filebeat:
+  config:
+    modules:
+      path: /etc/filebeat/modules.d/*.yml
+      reload:
+        enabled: false
+
+output:
+  logstash:
+    # Turned off compression for debugging only!
+    compression_level: 0
+    hosts:
+    - localhost:5044
+
+processors:
+
+- dissect:
+    field: "message"
+    target_prefix: "req"
+    tokenizer: '%{client} %{user} %{auth} [%{timestamp}] "%{method} /%{uri} HTTP/%{http_version}" %{http_status} '
+    when:
+      equals:
+        event:
+          dataset: "apache.access"
+
+- add_fields:
+    fields:
+      app: "apache-access"
+    target: ""
+    when:
+      equals:
+        event:
+          dataset: "apache.access"
+
+- drop_fields:
+    fields:
+    - agent.id
+    - agent.type
+    - agent.version
+    - ecs.version
+    - event.dataset
+    - event.module
+    - fileset.name
+    - input.type
+    - source
+    when:
+      equals:
+        event:
+          dataset: "apache.access"
