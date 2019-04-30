@@ -1,0 +1,5 @@
+! links neben rechter Strg
+keycode 134 = XF86Launch1
+! "/" auf CapsLock
+clear lock
+keycode 66 = slash

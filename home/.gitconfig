@@ -1,0 +1,16 @@
+[user]
+    name = Christian Brunotte
+    email = cb@lathspell.de
+[push]
+    default = simple
+[color]
+    ui = auto
+[alias]
+    my-log = log --graph --topo-order --all --full-history --pretty=tformat:'%Cred%h%Creset %x09 %ad %C(bold blue)<%ae>%Creset %C(yellow)%d%Creset %s' -n 15
+[core]
+    pager = cat
+    # Pfadnamen mit UTF-8 Zeichen, wie Umlauten, nicht quoten
+    quotepath = off
+    abbrev = 8
+[credential]
+    helper = store
