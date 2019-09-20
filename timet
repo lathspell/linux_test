@@ -1,0 +1,16 @@
+#!/usr/bin/perl -w
+
+use Date::Parse;
+
+if ($#ARGV == -1){
+        print "Usage: timet <timet>|<\"2000-01-01 14:55:59\">\n";
+        print "Now: " . time() . "\n";
+        exit(1);
+}
+
+if ($ARGV[0] !~ /-/) {
+        print localtime($ARGV[0])." (localtime)\n".
+                  gmtime($ARGV[0])." (gmtime)\n";
+} else {
+        print Date::Parse::str2time(join(" ",@ARGV))," (str2time==localtime)\n";
+} 
