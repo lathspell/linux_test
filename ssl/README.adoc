@@ -1,0 +1,4 @@
+= Create self signed certificate = 
+
+    openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 36544 -out certificate.pem
+
