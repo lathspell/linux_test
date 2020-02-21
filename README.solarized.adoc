@@ -1,5 +1,4 @@
-Links
-=====
+== Links
 
 * Homepage: https://ethanschoonover.com/solarized/
 * dircolors: https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-light

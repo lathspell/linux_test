@@ -1,0 +1,4 @@
+Delete some lines after match::
+
+    gsed -e '/resource_access/,+8 d' foo.json 
+
