@@ -1,23 +1,30 @@
 
-autoload -Uz compinit promptinit
+# zsh auto-completion
+autoload -Uz compinit
 compinit
-promptinit
+zstyle ':completion:*' menu select
 
+# zsh prompt (only necessary for builtin themes, see PS1)
+# autoload -Uz promptinit
+# promptinit
+
+# zsh key mappings
 bindkey $'\E[1;5D' vi-backward-blank-word
 bindkey $'\E[1;5C' vi-forward-blank-word
 
-zstyle ':completion:*' menu select
+# zsh bell-style
+unsetopt BEEP
 
-HISTFILE=~/.histfile
+# zsh history
 HISTSIZE=1000
-SAVEHIST=1000
 
 export PAGER=cat
 export LANG=de_DE.UTF-8
 export TEMPDIR=/var/tmp
 export TMPDIR=/var/tmp
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin/:$HOME/.local/bin:$HOME/go/bin:$HOME/.kube/plugins/jordanwilson230
-export PS1='%{%F{magenta}%}%n%{%f%}%{%F{cyan}%}@%{%f%}%{%F{yellow}%}%m%{%f%}:%~%(#.#.$) '
+export PS1="%F{magenta}%n%f@%F{green}%m%f:%F{blue}%~%f\$ "
+
 alias l='ls --color --all --classify'
 alias ll='ls --color --all --classify -l'
 alias o='less'
