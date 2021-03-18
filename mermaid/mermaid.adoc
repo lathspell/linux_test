@@ -1,0 +1,40 @@
+
+= Mermaid Test
+
+[mermaid]
+----
+sequenceDiagram
+    participant alice
+
+    Alice->>+John: Hello John, how are you?rrrrrr
+    Alice->>+John: John, can you hear me?
+    John-->>-Alice: Hi Alice, I can hear you!
+    John-->>-Alice: I feel grreat!
+----
+
+[plantuml]
+----
+participant alice
+participant bob
+
+alice -> bob2
+----
+
+[mermaid]
+----
+graph LR
+
+Q1{{Can Client Secret be kept secret?}}
+Q2{{Separate frontend / backend?}}
+Q3{{Keep users credentials secret to frontend?}}
+
+F1(Implicit Grant)
+F2(Client Credential Grant)
+F3(Password Grant)
+F4(Authorization Code Grant)
+
+Q1 -->|yes| Q2 -->|yes| Q3 -->|yes| F4
+Q1 -->|no| F1
+Q2 -->|no| F2
+Q3 -->|no| F3
+----
