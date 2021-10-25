@@ -1,0 +1,15 @@
+= traefik as HTTP proxy
+
+Add the following to /etc/hosts
+
+    127.0.0.1   httpbin.localhost
+    127.0.0.1   whoami.localhost
+
+Then start with:
+
+    docker compose up
+
+Access with:
+
+    http http://whoami.localhost/
+
