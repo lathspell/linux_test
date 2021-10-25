@@ -28,4 +28,11 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
-      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.http.routers.whoami.entrypoints=web" # which external port to use (see --entrypoints.web.address above)
+      - "traefik.http.services.whoami.loadbalancer.server.port=80" # in case the service opens more than one port
+      - "traefik.http.routers.whoami.middlewares=my-cors" # middlewares have global names but can be defined anywhere
+      - "traefik.http.middlewares.my-cors.headers.customResponseHeaders.Access-Control-Allow-Origin=http://localhost"
+      - "traefik.http.middlewares.my-cors.headers.customResponseHeaders.Access-Control-Allow-Methods=GET"
+      - "traefik.http.middlewares.my-cors.headers.customResponseHeaders.Access-Control-Allow-Credentials=true"
+      - "traefik.http.middlewares.my-cors.headers.customResponseHeaders.Access-Control-Max-Age=100"
+      - "traefik.http.middlewares.my-cors.headers.customResponseHeaders.Vary=Origin"
